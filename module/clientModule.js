@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.Schema(
+const ClientSchema = mongoose.Schema(
     {
         name: {
             type: String,
@@ -15,25 +15,18 @@ const UserSchema = mongoose.Schema(
         email: {
             type: String,
             required: true,
-            unique: true,  // Ensure unique constraint is applied
         },
 
         phoneNumber: {
-            type: String,  // You can keep it a String if you want, or change to Number
+            type: Number,
             required: true,
-            unique: true,  // Enforcing uniqueness for phoneNumber
+            unique: true,
         },
 
         userName: {
             type: String,
             required: true,
-            unique: true,  // Enforcing uniqueness for userName
-        },
-
-        userNumber: {
-            type: String,  // Ensure this field exists in the schema if you are using it
-            required: true,
-            unique: true,  // Enforcing uniqueness for userNumber
+            unique: true,
         },
 
         sex: {
@@ -50,6 +43,5 @@ const UserSchema = mongoose.Schema(
         timestamps: true,
     }
 );
-
-const User = mongoose.model("User", UserSchema);
-module.exports = User;
+const Client = mongoose.model ("Client", ClientSchema);
+module.exports = Client

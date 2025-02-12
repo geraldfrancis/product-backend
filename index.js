@@ -1,22 +1,26 @@
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const app = express();
-const cors = require("cors");
 const productRoute =require("./routes/productRoutes.js");
-const userRoutes = require("./routes/userRoutes.js")
-
+const clientRoutes = require("./routes/clientRoutes.js");
+const cors = require('cors')
 app.use(express.json());
 
 //routes
 app.use("/api/product",  productRoute)
-app.use("/api/user", userRoutes);
+app.use("/api/client", clientRoutes);
 
 
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
 app.use(cors());
 
-
-app.listen(9000, () => {
-    console.log("server is running in port 9000");
+app.listen(3000, () => {
+    console.log("server is running in port 3000");
 });
 
 
